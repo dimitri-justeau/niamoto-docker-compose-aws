@@ -57,6 +57,7 @@ python niamoto-portal/manage.py collectstatic --noinput
 
 # Start celery worker
 echo "Starting celery worker"
+sudo chmod 640 /etc/default/celeryd
 sudo sh /etc/init.d/celeryd start
 echo "Celery worker started"
 
