@@ -72,5 +72,5 @@ echo "Starting server"
 if [ "$1" = "debug" ]; then
     bash
 else
-    gunicorn_start.sh
+    sh ./gunicorn_start.sh
 fi
