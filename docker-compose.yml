@@ -15,13 +15,8 @@ services:
             - "5555:5555"
         depends_on:
             - niamoto-django
-            - niamoto-geoserver
-        volumes:
-            - /etc/letsencrypt:/etc/letsencrypt
-            - /etc/ssl/certs:/etc/ssl/certs
         volumes_from:
             - niamoto-django:ro
-            - niamoto-geoserver:ro
         restart: always
 
     niamoto-django:
