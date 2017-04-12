@@ -17,6 +17,8 @@ services:
             - niamoto-django
         volumes_from:
             - niamoto-django:ro
+        extra_hosts:
+            - "niamoto-geoserver:54.202.168.181"
         restart: always
 
     niamoto-django:
