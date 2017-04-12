@@ -23,7 +23,6 @@ services:
         build:
             context: ./niamoto-django
         depends_on:
-            - niamoto-geoserver
             - niamoto-rabbitmq
         volumes:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
