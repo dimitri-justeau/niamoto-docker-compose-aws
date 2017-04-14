@@ -29,8 +29,6 @@ services:
         volumes:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
             - /home/niamoto/NIAMOTO_BACKUPS:/home/niamoto/niamoto-portal/data/backups
-        extra_hosts:
-            - "niamoto-postgres:niamoto-postgres.c1gfcnk4ni8t.ap-southeast-2.rds.amazonaws.com"
 
         restart: always
 

@@ -132,7 +132,7 @@ WSGI_APPLICATION = 'niamoto.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        'HOST': 'niamoto-postgres',
+        'HOST': 'niamoto-postgres.c1gfcnk4ni8t.ap-southeast-2.rds.amazonaws.com',
         'PORT': '5432',
         'NAME': 'niamoto',
         'USER': 'niamoto',
@@ -140,7 +140,7 @@ DATABASES = {
     },
     "readonly": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        'HOST': 'niamoto-postgres',
+        'HOST': 'niamoto-postgres.c1gfcnk4ni8t.ap-southeast-2.rds.amazonaws.com',
         'PORT': '5432',
         'NAME': 'niamoto',
         'USER': 'niamoto_readonly',
