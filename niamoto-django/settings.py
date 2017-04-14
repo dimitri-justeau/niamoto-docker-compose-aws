@@ -295,6 +295,10 @@ CONSTANCE_CONFIG = {
         'http://geoniamoto.ird.nc/geoserver/',
         "Niamoto's geoserver base url"
     ),
+    'FLOWER_BASE_URL': (
+        'http://niamoto.ird.nc:5555/flower/',
+        'Flower monitoring base url'
+    )
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
