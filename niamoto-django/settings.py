@@ -37,7 +37,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-EMAIL_BACKEND = 'niamoto.email_backends.DynamicEmailBackend'
+EMAIL_BACKEND = 'niamoto_portal.email_backends.DynamicEmailBackend'
 DEFAULT_FROM_EMAIL = 'niamoto.nc@gmail.com'
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
@@ -126,7 +126,7 @@ MIDDLEWARE_CLASSES = [
     'account.middleware.TimezoneMiddleware',
 ]
 
-ROOT_URLCONF = 'niamoto.urls'
+ROOT_URLCONF = 'niamoto_portal.urls'
 
 TEMPLATES = [
     {
@@ -146,7 +146,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'niamoto.wsgi.application'
+WSGI_APPLICATION = 'niamoto_portal.wsgi.application'
 
 
 # Database
