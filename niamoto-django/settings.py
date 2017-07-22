@@ -77,7 +77,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # Third party
-    'django_extensions',
+    # 'django_extensions',
     'mptt',
     'rest_framework',
     'rest_framework_gis',

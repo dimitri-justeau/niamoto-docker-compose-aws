@@ -12,17 +12,17 @@ RUN git config --global user.email "niamoto.nc@gmail.com" && \
     git config --global user.name "Niamoto server"
 
 # Add mod_spatialite shared library
-RUN apt-get install -y libsqlite3-mod-spatialite --fix-missing
+RUN apt-get install -y libsqlite3-mod-spatialite libproj-dev gdal-bin libgdal-dev --fix-missing
 
 # Install postgresql-client for dbbackups
-RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list \
+RUN sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y postgresql-client --fix-missing \
-    && apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential \
+    && apt-get install -y binutils build-essential
 
 # Install node and browserify
-RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - \
-    && sudo apt-get install -y nodejs \
+RUN curl -s https://deb.nodesource.com/setup_8.x | bash - \
+    && apt-get install -y nodejs \
     && npm install -g browserify \
     && npm install -g yarn
 
@@ -30,7 +30,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - \
 RUN sh -c 'echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran34/" >> /etc/apt/sources.list' \
     && apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF' \
     && apt-get update \
-    && apt-get install r-base
+    && apt-get install -y r-base
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -66,7 +66,7 @@ RUN git clone https://github.com/niamoto/niamoto-portal.git
 RUN git clone https://github.com/niamoto/niamoto-portal-etl.git
 
 # Add the niamoto django template setting file
-ADD settings.py niamoto-portal/niamoto/
+ADD settings.py niamoto-portal/niamoto_portal/
 
 # Add init_superuser script
 ADD init_superuser.py /home/niamoto

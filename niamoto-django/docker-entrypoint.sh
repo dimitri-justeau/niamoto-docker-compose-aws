@@ -33,7 +33,7 @@ cd .. && \
 sudo pip install -r niamoto-portal/requirements.txt
 
 # Pull last version of niamoto-portal-etl
-cd niamoto-portal && \
+cd niamoto-portal-etl && \
 git pull && \
 cd .. &&
 
@@ -41,7 +41,10 @@ cd .. &&
 yarn install
 
 # Generate secret key
-python niamoto-portal/generate_secret_key.py --path niamoto-portal/niamoto/settings.py
+python niamoto-portal/generate_secret_key.py --path niamoto-portal/niamoto_portal/settings.py
+
+# Create log file
+touch /home/niamoto/niamoto_portal.log
 
 # Change owner of site media and data directory to niamoto
 sudo chown -R niamoto /home/niamoto/niamoto-portal/site_media
@@ -71,15 +74,15 @@ echo "Collecting static files"
 python niamoto-portal/manage.py collectstatic --noinput
 
 # Start celery worker
-echo "Starting celery worker"
-sudo chmod 640 /etc/default/celeryd
-sudo sh /etc/init.d/celeryd start
-echo "Celery worker started"
+#echo "Starting celery worker"
+#sudo chmod 640 /etc/default/celeryd
+#sudo sh /etc/init.d/celeryd start
+#echo "Celery worker started"
 
 # Start flower monitoring
-echo "Starting flower monitor"
-sudo sh /etc/init.d/flower start
-echo "flower monitor started"
+#echo "Starting flower monitor"
+#sudo sh /etc/init.d/flower start
+#echo "flower monitor started"
 
 # Start server
 echo "Starting server"
