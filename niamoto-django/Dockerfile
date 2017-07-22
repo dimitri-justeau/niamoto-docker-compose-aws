@@ -22,7 +22,7 @@ RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/'
 
 # Install node and browserify
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash - \
-    && sudo apt-get install -y nodejs
+    && sudo apt-get install -y nodejs \
     && npm install -g browserify \
     && npm install -g yarn
 
