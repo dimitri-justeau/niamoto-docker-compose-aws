@@ -42,6 +42,27 @@ DEFAULT_FROM_EMAIL = 'niamoto.nc@gmail.com'
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'applogfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(PROJECT_DIR, 'niamoto_portal.log'),
+            'maxBytes': 1024 * 1024 * 15,
+            'backupCount': 10,
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['applogfile'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,6 +77,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     # Third party
+    'django_extensions',
     'mptt',
     'rest_framework',
     'rest_framework_gis',
@@ -78,8 +100,9 @@ INSTALLED_APPS = [
     'apps.geoserver_admin',
     'apps.forest_digitizing',
     'apps.inventories',
-    'apps.taxon_dashboards',
+    'apps.taxon_dashboard',
     'apps.plot_dashboard',
+    'apps.data_marts',
     'rest',
     'web',
 

@@ -15,12 +15,24 @@ RUN git config --global user.email "niamoto.nc@gmail.com" && \
 RUN apt-get install -y libsqlite3-mod-spatialite --fix-missing
 
 # Install geospatial dependencies
-RUN sudo apt-get install -y binutils libproj-dev gdal-bin
+RUN sudo apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential
 
 # Install postgresql-client for dbbackups
 RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list
 RUN apt-get update
 RUN sudo apt-get install -y postgresql-client --fix-missing
+
+# Install node and browserify
+RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
+    sudo apt-get install -y nodejs \
+    npm install -g browserify \
+    npm install -g yarn
+
+# Install R
+RUN sh -c 'echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran34/" >> /etc/apt/sources.list' \
+    apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+    apt-get update \
+    apt-get install r-base
 
 # Upgrade pip
 RUN pip install --upgrade pip
@@ -46,8 +58,14 @@ RUN git clone https://github.com/dimitri-justeau/django-rest-framework-docs.git
 # Download django-qgis-plugin-repository
 RUN git clone https://github.com/dimitri-justeau/django-qgis-plugin-repository.git
 
+# Download niamoto-core
+RUN git clone https://github.com/dimitri-justeau/niamoto-core.git
+
 # Download niamoto-portal
 RUN git clone https://github.com/niamoto/niamoto-portal.git
+
+# Download niamoto-portal-etl
+RUN git clone https://github.com/niamoto/niamoto-portal-etl.git
 
 # Add the niamoto django template setting file
 ADD settings.py niamoto-portal/niamoto/

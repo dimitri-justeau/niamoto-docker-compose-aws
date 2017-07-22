@@ -19,11 +19,26 @@ git pull && \
 sudo python setup.py develop && \
 cd ..
 
+# Pull last version of niamoto-core
+cd niamoto-core && \
+git pull && \
+cd .. && \
+sudo pip install -r niamoto-core/requirements.txt && \
+sudo python niamoto-core/setup.py install
+
 # Pull last version of niamoto-portal
 cd niamoto-portal && \
 git pull && \
 cd .. && \
 sudo pip install -r niamoto-portal/requirements.txt
+
+# Pull last version of niamoto-portal-etl
+cd niamoto-portal && \
+git pull && \
+cd .. &&
+
+# Install js dependencies
+yarn install
 
 # Generate secret key
 python niamoto-portal/generate_secret_key.py --path niamoto-portal/niamoto/settings.py

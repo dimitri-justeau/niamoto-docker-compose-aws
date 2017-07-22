@@ -5,8 +5,8 @@ DJANGODIR=/home/niamoto/niamoto-portal       # Django project directory (*)
 USER=`whoami`                            # the user to run as (*)
 GROUP=`whoami`                           # the group to run as (*)
 NUM_WORKERS=1                            # how many worker processes should Gunicorn spawn (*)
-DJANGO_SETTINGS_MODULE=niamoto.settings    # which settings file should Django use (*)
-DJANGO_WSGI_MODULE=niamoto.wsgi            # WSGI module name (*)
+DJANGO_SETTINGS_MODULE=niamoto_portal.settings    # which settings file should Django use (*)
+DJANGO_WSGI_MODULE=niamoto_portal.wsgi            # WSGI module name (*)
 
 mkdir /home/niamoto/log
 
