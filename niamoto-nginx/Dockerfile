@@ -3,7 +3,7 @@ FROM debian:jessie
 MAINTAINER Dimitri Justeau <dimitri.justeau@gmail.com>
 
 # Install Nginx
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && apt-get install -y --force-yes nginx
 
 # Remove default Nginx conf file
 RUN rm -v /etc/nginx/nginx.conf
