@@ -15,7 +15,7 @@ RUN git config --global user.email "niamoto.nc@gmail.com" && \
 RUN apt-get install -y libsqlite3-mod-spatialite --fix-missing
 
 # Install postgresql-client for dbbackups
-RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list
+RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list \
     apt-get update \
     apt-get install -y postgresql-client --fix-missing \
     apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential \
