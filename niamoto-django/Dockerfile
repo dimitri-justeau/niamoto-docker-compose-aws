@@ -16,21 +16,21 @@ RUN apt-get install -y libsqlite3-mod-spatialite --fix-missing
 
 # Install postgresql-client for dbbackups
 RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list \
-    apt-get update \
-    apt-get install -y postgresql-client --fix-missing \
-    apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential \
+    && apt-get update \
+    && apt-get install -y postgresql-client --fix-missing \
+    && apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential \
 
 # Install node and browserify
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
-    apt-get install -y nodejs \
-    npm install -g browserify \
-    npm install -g yarn
+    && apt-get install -y nodejs \
+    && npm install -g browserify \
+    && npm install -g yarn
 
 # Install R
 RUN sh -c 'echo "deb http://cran.rstudio.com/bin/linux/debian jessie-cran34/" >> /etc/apt/sources.list' \
-    apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF' \
-    apt-get update \
-    apt-get install r-base
+    && apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF' \
+    && apt-get update \
+    && apt-get install r-base
 
 # Upgrade pip
 RUN pip install --upgrade pip
