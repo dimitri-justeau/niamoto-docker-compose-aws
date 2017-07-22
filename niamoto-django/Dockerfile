@@ -14,13 +14,11 @@ RUN git config --global user.email "niamoto.nc@gmail.com" && \
 # Add mod_spatialite shared library
 RUN apt-get install -y libsqlite3-mod-spatialite --fix-missing
 
-# Install geospatial dependencies
-RUN apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential
-
 # Install postgresql-client for dbbackups
 RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y postgresql-client --fix-missing
+    apt-get update \
+    apt-get install -y postgresql-client --fix-missing \
+    apt-get install -y binutils libproj-dev gdal-bin libgdal-dev build-essential \
 
 # Install node and browserify
 RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
